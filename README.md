@@ -17,4 +17,4 @@ This would let hide and restore a window without moving the mouse cursor
 - documentation
 - internationalization
 
-Another project appeared while I created this fork.
+Another project exists for these functionnality and others, that I discovered recently.
