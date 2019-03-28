@@ -8,13 +8,16 @@ It is modified to accept a string on the command line, to only treat windows tha
 If you type "TrayMinimizer Sunbird" on the command line, double click on the TrayMinimizer icon 
 will reduce Sunbird to the notification area. Click on the Sunbird icon will restore its window.
 
+Version 2 authorizes the program to be launched several times, so that it can treat windows of several applications, noticed by a character chain in the command line.
+
 Still to be done :
-- authorize several sessions, to reduce several different windows
+- update the About dialog box
+- documentation
+
 - when restoring a window by clicking on its icon, let the icon visible so that you can hide the window again with it.
 This would let hide and restore a window without moving the mouse cursor
 - support of the keyboard
 - probably update the menu
-- documentation
 - internationalization
 
 Another project exists for these functionnalities and others, that I discovered recently.
