@@ -16,7 +16,7 @@ Still to be done :
 - update the About dialog box
 - user documentation
 - user download of executable
-(...)
+- (...)
 - when restoring a window by clicking on its icon, let the icon visible so that you can hide the window again with it.
 This would let hide and restore a window without moving the mouse cursor
 - support of the keyboard
