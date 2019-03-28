@@ -48,7 +48,7 @@ namespace Tray_minimizer
 			// 
 			this.Tray.ContextMenuStrip = this.AppContextMenu;
 			this.Tray.Icon = global::Tray_minimizer.Properties.Resources.icon;
-			this.Tray.Text = "Tray minimizer\r\nDouble-Click to reduce";
+			this.Tray.Text = "Tray minimizer\r\nDouble-Click to reduce\r\n";
 			this.Tray.Visible = true;
 			this.Tray.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Tray_MouseDoubleClick);
 			// 
@@ -62,14 +62,14 @@ namespace Tray_minimizer
             this.Abouttoolstrip});
 			this.AppContextMenu.Name = "AppContextMenu";
 			this.AppContextMenu.ShowImageMargin = false;
-			this.AppContextMenu.Size = new System.Drawing.Size(229, 112);
+			this.AppContextMenu.Size = new System.Drawing.Size(223, 112);
 			this.AppContextMenu.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.AppContextMenu_Closed);
 			this.AppContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.AppContextMenu_Opening);
 			// 
 			// Separator
 			// 
 			this.Separator.Name = "Separator";
-			this.Separator.Size = new System.Drawing.Size(225, 6);
+			this.Separator.Size = new System.Drawing.Size(219, 6);
 			// 
 			// quick
 			// 
@@ -78,14 +78,14 @@ namespace Tray_minimizer
             this.all,
             this.alltray});
 			this.quick.Name = "quick";
-			this.quick.Size = new System.Drawing.Size(228, 34);
+			this.quick.Size = new System.Drawing.Size(222, 34);
 			this.quick.Text = "Quick commands";
 			// 
 			// all
 			// 
 			this.all.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
 			this.all.Name = "all";
-			this.all.Size = new System.Drawing.Size(185, 34);
+			this.all.Size = new System.Drawing.Size(188, 34);
 			this.all.Text = "Show All";
 			this.all.Click += new System.EventHandler(this.all_Click);
 			// 
@@ -93,21 +93,21 @@ namespace Tray_minimizer
 			// 
 			this.alltray.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
 			this.alltray.Name = "alltray";
-			this.alltray.Size = new System.Drawing.Size(185, 34);
+			this.alltray.Size = new System.Drawing.Size(188, 34);
 			this.alltray.Text = "All to tray";
 			this.alltray.Click += new System.EventHandler(this.alltray_Click);
 			// 
 			// Exititem
 			// 
 			this.Exititem.Name = "Exititem";
-			this.Exititem.Size = new System.Drawing.Size(228, 34);
+			this.Exititem.Size = new System.Drawing.Size(222, 34);
 			this.Exititem.Text = "Exit";
 			this.Exititem.Click += new System.EventHandler(this.Exititem_Click);
 			// 
 			// Abouttoolstrip
 			// 
 			this.Abouttoolstrip.Name = "Abouttoolstrip";
-			this.Abouttoolstrip.Size = new System.Drawing.Size(228, 34);
+			this.Abouttoolstrip.Size = new System.Drawing.Size(222, 34);
 			this.Abouttoolstrip.Text = "About";
 			this.Abouttoolstrip.Click += new System.EventHandler(this.Abouttoolstrip_Click);
 			// 
@@ -118,11 +118,12 @@ namespace Tray_minimizer
 			// 
 			// Form1
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(303, 258);
-			this.Margin = new System.Windows.Forms.Padding(4);
+			this.ClientSize = new System.Drawing.Size(341, 322);
+			this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.Name = "Form1";
+			this.Opacity = 0D;
 			this.ShowIcon = false;
 			this.ShowInTaskbar = false;
 			this.Text = "TrayMinimizer F1";

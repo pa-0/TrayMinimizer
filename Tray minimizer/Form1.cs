@@ -15,6 +15,7 @@ namespace Tray_minimizer
 {
     public partial class Form1 : Form
     {
+		string strArg = null;
         List<window> windows = new List<window>();
         Properties.Settings set = new Properties.Settings();
         bool isinstartup = false;
@@ -147,11 +148,13 @@ namespace Tray_minimizer
         private void AppContextMenu_Opening(object sender, CancelEventArgs e)
         {
             getwindows();
-            Separator.Visible = windows.Count - 1 > 0;
-            for (int i = 0; i < windows.Count - 1; i++)
+			Separator.Visible = windows.Count > 0;
+            for (int i = 0; i < windows.Count; i++)
             {
                 ToolStripMenuItem temp = new ToolStripMenuItem(windows[i].title, null, programclick);
+				//System.Diagnostics.Debug.Print(i.ToString() + " : " + windows[i].title);
                 temp.Tag = windows[i];
+				//System.Diagnostics.Debug.Print(AppContextMenu.Items.Count + " articles dans le menu");
                 AppContextMenu.Items.Insert(0, temp);
             }
         }
@@ -196,13 +199,24 @@ namespace Tray_minimizer
 
 			#region restreindre le traitement aux fenêtres dont le titre contient l'argument en ligne de commandes
 			string strCmd = (String.Join(" ", Environment.GetCommandLineArgs()));
-			if (strCmd.Length > Application.ExecutablePath.Length + 1)
+			string strExe = Environment.GetCommandLineArgs()[0];
+			try
 			{
-				string strArg = (strCmd.Substring(Application.ExecutablePath.Length + 1));
-				if (!title.ToString().Contains(strArg))
-					return true;
+				if (strCmd.Length > strExe.Length + 1)
+				{
+					strArg = (strCmd.Substring(strExe.Length + 1));
+					if (!title.ToString().Contains(strArg))
+						return true;
+				}
+			}
+			catch(Exception ex)
+			{
+				MessageBox.Show("Error while evaluating title to arg : " + ex.Message);
 			}
 			#endregion
+
+			//MessageBox.Show(title.ToString(),strArg);
+
 
 			if (string.IsNullOrEmpty(title.ToString())&& set.IgnoreTitle)
             {
@@ -404,6 +418,8 @@ namespace Tray_minimizer
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			reduce();
+			string strBulle = this.Tray.Text + ((strArg.Length<24)?strArg:strArg.Substring(0,23));
+			this.Tray.Text = strBulle;
 		}
 
 		private void reduce()
@@ -474,10 +490,10 @@ namespace Tray_minimizer
 			reduce();
 		}
 
-		private void Tray_MouseDoubleClick_1(object sender, MouseEventArgs e)
-		{
+		//private void Tray_MouseDoubleClick_1(object sender, MouseEventArgs e)
+		//{
 
-		}
+		//}
 
 		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
 		{

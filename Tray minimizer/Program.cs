@@ -15,28 +15,31 @@ namespace Tray_minimizer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Mutex mt = null;
-            try
-            {
-                mt = Mutex.OpenExisting("Tray minimizer");
-            }
-            catch (WaitHandleCannotBeOpenedException)
-            {
-                
-            }
-            if (mt == null)
-            {
-                mt = new Mutex(true, "Tray minimizer");
-                Application.Run(new Form1());
-                GC.KeepAlive(mt);
-                mt.ReleaseMutex();
-            }
-            else
-            {
-                mt.Close();
-                MessageBox.Show("Application already running");
-                Application.Exit();
-            }
-        }
+			#region force unique occurrence
+			//Mutex mt = null;
+			//try
+			//{
+			//	mt = Mutex.OpenExisting("Tray minimizer");
+			//}
+			//catch (WaitHandleCannotBeOpenedException)
+			//{
+
+			//}
+			//if (mt == null)
+			//{
+			//	mt = new Mutex(true, "Tray minimizer");
+			//	Application.Run(new Form1());
+			//	GC.KeepAlive(mt);
+			//	mt.ReleaseMutex();
+			//}
+			//else
+			//{
+			//	mt.Close();
+			//	MessageBox.Show("Application already running");
+			//	Application.Exit();
+			//}
+			#endregion force unique occurrence
+			Application.Run(new Form1());
+		}
     }
 }
