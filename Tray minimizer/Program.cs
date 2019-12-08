@@ -39,6 +39,7 @@ namespace Tray_minimizer
 			//	Application.Exit();
 			//}
 			#endregion force unique occurrence
+			//Application.Run(new About.AboutBox());
 			Application.Run(new Form1());
 		}
     }

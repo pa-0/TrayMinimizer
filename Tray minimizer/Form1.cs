@@ -15,28 +15,36 @@ namespace Tray_minimizer
 {
     public partial class Form1 : Form
     {
-		string strArg = null;
+		public string strArg = "";
         List<window> windows = new List<window>();
         Properties.Settings set = new Properties.Settings();
         bool isinstartup = false;
-        About.AboutBox box = new About.AboutBox("Tray minimizer");
+		About.AboutBox box;
+		//About.AboutBox box = new About.AboutBox(StrArg);
+
+		string StrArg
+		{
+			get { return strArg; }
+			set { strArg = value; }
+		}
 
         public Form1()
         {
             InitializeComponent();
-			for(int i = 0; i < 5; i++)
-			{
-				System.Diagnostics.Debug.Print(box.Controls[i].Name + " : " +
-						box.Controls[i].Text);
-			}
+			//for(int i = 0; i < 5; i++)
+			//{
+			//	//box.Controls[i].Text = "test";
+			//	System.Diagnostics.Debug.Print(box.Controls[i].Name + " : " +
+			//			box.Controls[i].Text);
+			//}
 
 			//box.Show();
-			
             winapi.statusbar = winapi.FindWindow("Shell_TrayWnd", "");
 
-            box.programname = "Tray minimizer";
-            box.StartPosition = FormStartPosition.CenterScreen;
-            box.BackColor = Color.BlanchedAlmond;
+			box = new About.AboutBox(strArg);
+			//box.programname = "Tray minimizer";
+   //         box.StartPosition = FormStartPosition.CenterScreen;
+            //box.BackColor = Color.BlanchedAlmond;
         }
 
         protected override void WndProc(ref Message m)
@@ -197,14 +205,18 @@ namespace Tray_minimizer
 			StringBuilder title = new StringBuilder(256);
             winapi.GetWindowText(hWnd, title, 256);
 
-			#region restreindre le traitement aux fenêtres dont le titre contient l'argument en ligne de commandes
+			System.Diagnostics.Debug.Print(String.Format("{0} : {1}", hWnd, title));
+
+			#region retrain the treatment to windows of which the title contains the command line argument
 			string strCmd = (String.Join(" ", Environment.GetCommandLineArgs()));
 			string strExe = Environment.GetCommandLineArgs()[0];
+			//rather than Application.ExecutablePath, to allow the application to be run from a command line 
 			try
 			{
 				if (strCmd.Length > strExe.Length + 1)
 				{
 					strArg = (strCmd.Substring(strExe.Length + 1));
+					this.Text = "TM F1 " + strArg;
 					if (!title.ToString().Contains(strArg))
 						return true;
 				}
@@ -419,7 +431,12 @@ namespace Tray_minimizer
 		{
 			reduce();
 			string strBulle = this.Tray.Text + ((strArg.Length<24)?strArg:strArg.Substring(0,23));
+			if (!this.Text.Contains(strArg))
+			{
+				this.Text = this.Text + " " + strArg;
+			}
 			this.Tray.Text = strBulle;
+			box.LabelFilter = strArg;
 		}
 
 		private void reduce()
