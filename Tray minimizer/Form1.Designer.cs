@@ -41,6 +41,7 @@ namespace Tray_minimizer
 			this.Exititem = new System.Windows.Forms.ToolStripMenuItem();
 			this.Abouttoolstrip = new System.Windows.Forms.ToolStripMenuItem();
 			this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.AppContextMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -116,6 +117,11 @@ namespace Tray_minimizer
 			this.notifyIcon1.Text = "notifyIcon1";
 			this.notifyIcon1.Visible = true;
 			// 
+			// timer1
+			// 
+			this.timer1.Interval = 5000;
+			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -147,6 +153,7 @@ namespace Tray_minimizer
         private System.Windows.Forms.ToolStripMenuItem alltray;
         private System.Windows.Forms.ToolStripMenuItem Abouttoolstrip;
 		private System.Windows.Forms.NotifyIcon notifyIcon1;
+		private System.Windows.Forms.Timer timer1;
 	}
 }
 

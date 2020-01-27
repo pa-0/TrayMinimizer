@@ -15,6 +15,7 @@ namespace Tray_minimizer
 {
     public partial class Form1 : Form
     {
+		int icptTimer = 10;
 		public string strArg = "";
         List<window> windows = new List<window>();
         Properties.Settings set = new Properties.Settings();
@@ -437,6 +438,7 @@ namespace Tray_minimizer
 			}
 			this.Tray.Text = strBulle;
 			box.LabelFilter = strArg;
+			timer1.Enabled = true;
 		}
 
 		private void reduce()
@@ -515,6 +517,16 @@ namespace Tray_minimizer
 		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			showall();
+		}
+
+		private void timer1_Tick(object sender, EventArgs e)
+		{
+			icptTimer -= 1;
+			if (icptTimer <= 0)
+			{
+				timer1.Enabled = false;
+			}
+			reduce();
 		}
 	}
 }
