@@ -1,4 +1,4 @@
-# TrayMinimizer1
+# TrayMinimizer
 Minimize applications to the system tray
 
 This is a fork of this project :
